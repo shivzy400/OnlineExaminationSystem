@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <article class="media content-section">
+                <div class="media-body">
+                    <legend class=""><h3>Select Subject</h3></legend>
+                <table class="table">
+                
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Subject Name</th>
+                        <th scope="col">Code</th>
+                        <th scope="col">Difficulty</th>
+                        <th scope="col">Link</th>
+                    </tr>
+                    </thead>
+                    {% for subject in subjects %}
+                    <tbody>
+                    <tr>
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>{{ subject.subject }}</td>
+                        <td>{{ subject.subject_code }}</td>
+                        <td>{{ subject.difficulty }}</td>
+                        <td><a class="stretched-link text-secondary" href="{{ url_for('practice_test' , subject_code = subject.subject_code)}}">Give Test</a></td>
+                    </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+                </div>
+        </article>
+        </div>
+    </div>
+{% endblock content %} 

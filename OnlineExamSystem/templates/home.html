@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-md-12 fadeOut">
+                {% with messages = get_flashed_messages(with_categories=True) %}
+                    {% if messages %}
+                        {% for category , message in messages %}
+                            <div class="alert alert-{{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-12 text-center ">
+            <article class="media content-section">
+                <div class="media-body">
+                <div class="header-section">
+                    <h1 class="article-title">Online Proctored Examination System</h1>
+                    <p class="article-content">Towards creating an environment where students with different ability levels can be judged according to their competency</p>
+                </div>
+                </div>
+            </article>
+        </div>
+
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <article class="media content-section">
+                <div class="media-body">
+                    <legend class="border-bottom mb 4"><h3>About</h3></legend>
+                    <p class="article-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores excepturi nostrum unde, et dicta sequi suscipit, perferendis, ipsa illum odio ab natus numquam quaerat eveniet optio necessitatibus deserunt reiciendis ipsum?</p>
+                </div>
+            </article>
+        </div>
+
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <article class="media content-section">
+                <div class="media-body">
+                    <legend class="border-bottom mb 4"><h3>Getting Started</h3></legend>
+                    <div class="text-center">
+                        <p>Content You can put any information here you'd like. You can put any information here you'd like.</p>
+                        <a class="btn btn-info btn-lg m-1 btn-style" href="{{ url_for('pretest_page') }}">Give Test</a>
+                        <a class="btn btn-outline-secondary btn-lg m-1 btn-style" href="{{ url_for('rules_page') }}">See Rules</a>
+                    </div>
+                </div>
+                
+            </article>
+        </div>
+
+    </div>
+
+    
+    
+{% endblock %}

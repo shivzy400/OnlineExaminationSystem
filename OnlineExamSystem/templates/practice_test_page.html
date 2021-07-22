@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+	<div class="row justify-content-center">
+        <div class="col-md-12">
+    		<article class="media content-section">
+                <div class="media-body">
+                    <legend class="border-bottom mb 4"><h3>{{ subject.subject }}</h3></legend>
+                    <p class="text-secondary">Subject Code : {{ subject.subject_code }}</p>   
+                </div> 
+            </article>	
+        </div>
+    </div>
+
+	 <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="content-section">
+                <div class="media">
+                <div class="media-body">
+                    <h5 class=""><pre>Q.{{ count }}) {{ question.ques }}</pre></h5>
+                    <hr class="mt-2 mb-3"/>
+                    <ul type="None">
+                        <li class=""><pre>a) {{ question.option_1 }}</pre></li>
+                        <li class=""><pre>b) {{ question.option_2 }}</pre></li>
+                        {% if question.option_3 %}
+                            <li class=""><pre>c) {{ question.option_3 }}</pre></li>
+                        {% endif %}
+                        {% if question.option_3 %}
+                            <li class=""><pre>d) {{ question.option_4 }}</pre></li>
+                        {% endif %}
+                    </ul>
+                    <form action="{{ url_for('practice_test' , subject_code = subject.subject_code)}}" method="POST">
+                        {{ form.hidden_tag() }}
+                        <fieldset class="form-group">
+                            <div class="form-group">
+                                {{ form.options.label(class="form-control-label") }}
+                                {{ form.options(class="form-control form-control-lg") }}
+                            </div>
+                        </fieldset>
+                        <hr class="mt-2 mb-3"/>
+                        <div class="form-group">
+                            {{ form.submit(class="btn btn-outline-info") }}
+                        </div>
+                    </form>
+                    <div>
+                        Difficulty : {{ question.difficulty }}
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

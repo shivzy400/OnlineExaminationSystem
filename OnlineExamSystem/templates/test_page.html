@@ -1,0 +1,66 @@
+<html>
+    <head>
+        {% if title %}
+        <title>Computerized Adaptive Test 2.0 - {{ title }}</title>
+        {% else %}
+        <title>Computerized Adaptive Test 2.0</title>
+        {% endif %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static' , filename= 'style.css')}}">
+    </head>
+    <body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <article class="media content-section">
+                  <img class="account-img" src="{{ url_for('video_feed') }}">
+                    <div class="media-body">
+                        <legend class="border-bottom mb 4"><h3>{{ user.name }}</h3></legend>
+                        <p class="text-secondary">Username : @{{ user.username }}</p>
+                        <p class="text-secondary">Gender : {{ user.gender }}</p>
+                        <p class="text-right text-secondary">Question : {{ count }}/20</p>
+                        <h4>Test Type : Regular</h4>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="content-section">
+                    <div class="media">
+                    <div class="media-body">
+                        <h5 class=""><pre>Q.{{ count }}) {{ question.ques }}</pre></h5>
+                        <hr class="mt-2 mb-3"/>
+                        <ul type="None">
+                            <li class=""><pre>1) {{ question.option_1 }}</pre></li>
+                            <li class=""><pre>2) {{ question.option_2 }}</pre></li>
+                            {% if question.option_3 %}
+                                <li class=""><pre>3) {{ question.option_3 }}</pre></li>
+                            {% endif %}
+                            {% if question.option_3 %}
+                                <li class=""><pre>4) {{ question.option_4 }}</pre></li>
+                            {% endif %}
+                        </ul>
+                        <form action="{{ url_for('test_page')}}" method="POST">
+                            {{ form.hidden_tag() }}
+                            <fieldset class="form-group">
+                                <div class="form-group">
+                                    {{ form.options.label(class="form-control-label") }}
+                                    {{ form.options(class="form-control form-control-lg") }}
+                                </div>
+                            </fieldset>
+                            <hr class="mt-2 mb-3"/>
+                            <div class="form-group">
+                                {{ form.submit(class="btn btn-outline-info") }}
+                            </div>
+                        </form>
+                    </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
+

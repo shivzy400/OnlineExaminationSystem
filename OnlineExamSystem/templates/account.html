@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <article class="media content-section">
+                <div class="media-body">
+                    <legend class="border-bottom mb 4"><h3>{{ user.name }}</h3></legend>
+                    <p class="text-secondary">@{{ user.username }}</p>
+                    <p class="text-secondary">Number of Test : {{ user.no_of_test }}</p>
+                    {% if current_user.is_authenticated %}
+                    <div class="text-right">
+                        <a class="btn btn-secondary btn-md m-1" href="{{ url_for('update_account') }}">Edit Account</a>
+                    </div>
+                {% endif %}
+                </div>
+                
+            </article>
+        </div>
+
+    </div>
+{% endblock content %}

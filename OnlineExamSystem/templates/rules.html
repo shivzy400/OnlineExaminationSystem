@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-12">
+        <article class="media content-section">
+            <div class="media-body">
+                <legend class="border-bottom mb 4"><h3>Rules</h3></legend>
+                <p class="article-content">
+                    <ol type ="1">
+                        <li>Test will be of max 20 mins.
+                        <li>All Questions are compulsary.
+                        <li>Each Question carries 2 marks.
+                        <li>Test consist of 20 Questions of 5 levels.
+                        <li>No Negative marking.
+                        <li>Please DO NOT Refresh the page while solving the Test.
+                        <li>You can't navigate through Questions you have to submit your response in order to go to the next Question.
+                </p>
+                <div class="text-right">
+                    <a class="btn btn-secondary btn-lg m-1" href="{{ url_for('home_page') }}">Go Back</a>
+                </div>
+            </div>
+        </article>
+    </div>
+</div>
+{% endblock content %}
